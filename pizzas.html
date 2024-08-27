@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzas - Restaurante Delicias</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <img src="descarga.jpeg" alt="Restaurante Delicias" class="logo">
+        <nav>
+            <ul class="main-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="pizzas.html">Pizzas</a></li>
+                <li><a href="bebidas.html">Bebidas</a></li>
+                <li><a href="hamburguesas.html">Hamburguesas</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+            <div class="dropdown">
+                <button class="dropbtn">Más</button>
+                <div class="dropdown-content">
+                    <a href="login.html">Login</a>
+                    <a href="ayuda.html">Ayuda</a>
+                    <a href="contacto.html">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Nuestras Pizzas</h1>
+            <p>Descubre nuestras deliciosas pizzas, preparadas con los mejores ingredientes y mucho amor.</p>
+        </section>
+
+        <section class="pizza-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="pizza-card">
+                            <img src="margarita.jpg" alt="Pizza Margarita" class="pizza-img">
+                            <h2>Pizza Margarita</h2>
+                            <p>Tomate, mozzarella, albahaca fresca, sal y aceite de oliva.</p>
+                            <p><strong>Precio:</strong> $8.99</p>
+                            <button class="btn-primary add-to-cart" data-name="Pizza Margarita" data-price="8.99">Añadir al carrito</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pizza-card">
+                            <img src="pepperoni.jpg" alt="Pizza Pepperoni" class="pizza-img">
+                            <h2>Pizza Pepperoni</h2>
+                            <p>Tomate, mozzarella, pepperoni, orégano.</p>
+                            <p><strong>Precio:</strong> $9.99</p>
+                            <button class="btn-primary add-to-cart" data-name="Pizza Pepperoni" data-price="9.99">Añadir al carrito</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pizza-card">
+                            <img src="hawaiana.jpg" alt="Pizza Hawaiana" class="pizza-img">
+                            <h2>Pizza Hawaiana</h2>
+                            <p>Tomate, mozzarella, jamón, piña.</p>
+                            <p><strong>Precio:</strong> $10.99</p>
+                            <button class="btn-primary add-to-cart" data-name="Pizza Hawaiana" data-price="10.99">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="pizza-card">
+                            <img src="vegetarianaa.jpg" alt="Pizza Vegetariana" class="pizza-img">
+                            <h2>Pizza Vegetariana</h2>
+                            <p>Tomate, mozzarella, champiñones, pimientos, cebolla, aceitunas.</p>
+                            <p><strong>Precio:</strong> $11.99</p>
+                            <button class="btn-primary add-to-cart" data-name="Pizza Vegetariana" data-price="11.99">Añadir al carrito</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pizza-card">
+                            <img src="bbq.jpg" alt="Pizza BBQ" class="pizza-img">
+                            <h2>Pizza BBQ</h2>
+                            <p>Salsa BBQ, mozzarella, pollo, cebolla, pimientos.</p>
+                            <p><strong>Precio:</strong> $12.99</p>
+                            <button class="btn-primary add-to-cart" data-name="Pizza BBQ" data-price="12.99">Añadir al carrito</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pizza-card">
+                            <img src="cuatro_quesos.jpg" alt="Pizza Cuatro Quesos" class="pizza-img">
+                            <h2>Pizza Cuatro Quesos</h2>
+                            <p>Tomate, mozzarella, gorgonzola, parmesano, queso azul.</p>
+                            <p><strong>Precio:</strong> $13.99</p>
+                            <button class="btn-primary add-to-cart" data-name="Pizza Cuatro Quesos" data-price="13.99">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Restaurante Delicias. Todos los derechos reservados.</p>
+        <a href="contacto.html" class="btn-primary">Contáctanos</a>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cart = [];
+
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const name = this.getAttribute('data-name');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    
+                    const item = cart.find(i => i.name === name);
+                    
+                    if (item) {
+                        item.quantity += 1;
+                    } else {
+                        cart.push({ name, price, quantity: 1 });
+                    }
+                    
+                    alert(`${name} añadido al carrito.`);
+                });
+            });
+
+            // Add logic to save cart and manage cart page (carrito.html) in a similar manner.
+        });
+    </script>
+</body>
+<style>
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+    cursor: url('custom-cursor.png'), auto;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    max-width: 150px;
+    height: auto;
+    display: block;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+nav .main-nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+nav .main-nav li {
+    margin: 0 15px;
+}
+
+nav .main-nav li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav .main-nav li a:hover {
+    background-color: #ff6347;
+    color: #fff;
+}
+
+nav .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+nav .dropbtn {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+}
+
+nav .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+nav .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+nav .dropdown:hover .dropbtn {
+    background-color: #ff6347;
+}
+
+main {
+    padding: 2em;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    text-align: center;
+}
+
+.hero {
+    background: url('pizza_hero.jpg') no-repeat center center/cover;
+    color: #fff;
+    padding: 4em 2em;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pizza-menu {
+    margin-top: 2em;
+}
+
+.pizza-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2em;
+    padding: 1em;
+    text-align: center;
+}
+
+.pizza-card img {
+    max-width: 100%;
+    border-radius: 8px;
+    height: auto;
+}
+
+.pizza-card h2 {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+}
+
+.pizza-card p {
+    font-size: 1em;
+    margin: 0.5em 0;
+}
+
+.btn-primary {
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #e55347;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+footer .btn-primary {
+    margin-top: 0.5em;
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        flex-direction: column;
+    }
+
+    .main-nav li {
+        margin: 10px 0;
+    }
+
+    .pizza-card {
+        margin-bottom: 1em;
+    }
+}
+</style>
+</html>

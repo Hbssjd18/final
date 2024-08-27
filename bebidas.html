@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebidas - Restaurante Delicias</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <img src="descarga.jpeg" alt="Restaurante Delicias" class="logo">
+        <nav>
+            <ul class="main-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="pizzas.html">Pizzas</a></li>
+                <li><a href="bebidas.html">Bebidas</a></li>
+                <li><a href="hamburguesas.html">Hamburguesas</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+            <div class="dropdown">
+                <button class="dropbtn">Más</button>
+                <div class="dropdown-content">
+                    <a href="login.html">Login</a>
+                    <a href="ayuda.html">Ayuda</a>
+                    <a href="contacto.html">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Nuestras Bebidas</h1>
+            <p>Disfruta de nuestras refrescantes bebidas, perfectas para acompañar tus comidas.</p>
+        </section>
+
+        <section class="drink-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="drink-card">
+                            <img src="refresco.jpg" alt="Refresco" class="drink-img">
+                            <h2>Refresco</h2>
+                            <p>Refrescos de cola, limón, naranja y más.</p>
+                            <p><strong>Precio:</strong> $1.99</p>
+                            <button class="btn-primary add-to-cart" data-name="Refresco" data-price="1.99">Añadir al carrito</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="drink-card">
+                            <img src="ugo.jpg" alt="Jugo Natural" class="drink-img">
+                            <h2>Jugo Natural</h2>
+                            <p>Jugos frescos de naranja, manzana, zanahoria y más.</p>
+                            <p><strong>Precio:</strong> $2.99</p>
+                            <button class="btn-primary add-to-cart" data-name="Jugo Natural" data-price="2.99">Añadir al carrito</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="drink-card">
+                            <img src="smoothie.jpg" alt="Smoothie" class="drink-img">
+                            <h2>Smoothie</h2>
+                            <p>Smoothies de frutas variadas con yogur.</p>
+                            <p><strong>Precio:</strong> $3.99</p>
+                            <button class="btn-primary add-to-cart" data-name="Smoothie" data-price="3.99">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="drink-card">
+                            <img src="cerveza.jpg" alt="Cerveza" class="drink-img">
+                            <h2>Cerveza</h2>
+                            <p>Cervezas nacionales e importadas.</p>
+                            <p><strong>Precio:</strong> $4.99</p>
+                            <button class="btn-primary add-to-cart" data-name="Cerveza" data-price="4.99">Añadir al carrito</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="drink-card">
+                            <img src="vino.jpg" alt="Vino" class="drink-img">
+                            <h2>Vino</h2>
+                            <p>Variedad de vinos tintos, blancos y rosados.</p>
+                            <p><strong>Precio:</strong> $5.99</p>
+                            <button class="btn-primary add-to-cart" data-name="Vino" data-price="5.99">Añadir al carrito</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="drink-card">
+                            <img src="cafe.jpg" alt="Café" class="drink-img">
+                            <h2>Café</h2>
+                            <p>Café expreso, capuchino, latte y más.</p>
+                            <p><strong>Precio:</strong> $2.49</p>
+                            <button class="btn-primary add-to-cart" data-name="Café" data-price="2.49">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Restaurante Delicias. Todos los derechos reservados.</p>
+        <a href="contacto.html" class="btn-primary">Contáctanos</a>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cart = [];
+
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const name = this.getAttribute('data-name');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    
+                    const item = cart.find(i => i.name === name);
+                    
+                    if (item) {
+                        item.quantity += 1;
+                    } else {
+                        cart.push({ name, price, quantity: 1 });
+                    }
+                    
+                    alert(`${name} añadido al carrito.`);
+                });
+            });
+
+            // Add logic to save cart and manage cart page (carrito.html) in a similar manner.
+        });
+    </script>
+</body>
+<style>
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    max-width: 150px;
+    height: auto;
+    display: block;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+nav .main-nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+nav .main-nav li {
+    margin: 0 15px;
+}
+
+nav .main-nav li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav .main-nav li a:hover {
+    background-color: #ff6347;
+    color: #fff;
+}
+
+nav .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+nav .dropbtn {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+}
+
+nav .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+nav .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+nav .dropdown:hover .dropbtn {
+    background-color: #ff6347;
+}
+
+main {
+    padding: 2em;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    text-align: center;
+}
+
+.hero {
+    background: url('drink_hero.jpg') no-repeat center center/cover;
+    color: #fff;
+    padding: 4em 2em;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.drink-menu {
+    margin-top: 2em;
+}
+
+.drink-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.drink-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-primary {
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #ff4500;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    position: relative;
+}
+
+footer a {
+    color: #ff6347;
+    text-decoration: none;
+}
+</style>
+</html>

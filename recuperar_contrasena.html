@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña - Restaurante Delicias</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <img src="descarga.jpeg" alt="Restaurante Delicias" class="logo">
+    </header>
+
+    <main>
+        <section class="recuperar-contrasena">
+            <h1>Recuperar Contraseña</h1>
+            <p>Ingresa tu dirección de correo electrónico para recuperar tu contraseña. Te enviaremos un enlace para restablecerla.</p>
+            <form action="recuperar_contrasena_process.php" method="post">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required aria-label="Dirección de correo electrónico">
+                
+                <button type="submit">Enviar Enlace de Recuperación</button>
+                <p><a href="login.html">¿Recuerdas tu contraseña? Inicia sesión aquí</a></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Restaurante Delicias. Todos los derechos reservados.</p>
+    </footer>
+</body>
+<style>
+/* General Styles */
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 1em;
+        text-align: center;
+    }
+    
+    header .logo {
+        max-width: 150px;
+        height: auto;
+    }
+    
+    main {
+        flex: 1;
+        padding: 2em;
+        background-color: #fff;
+    }
+    
+    .recuperar-contrasena {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 2em;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    
+    .recuperar-contrasena h1 {
+        font-size: 2em;
+        margin-bottom: 0.5em;
+        color: #333;
+    }
+    
+    .recuperar-contrasena p {
+        font-size: 1.2em;
+        color: #666;
+        margin-bottom: 1.5em;
+    }
+    
+    .recuperar-contrasena form {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+    
+    .recuperar-contrasena label {
+        font-size: 1em;
+        color: #333;
+    }
+    
+    .recuperar-contrasena input[type="email"] {
+        padding: 0.75em;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1em;
+        width: 100%;
+    }
+    
+    .recuperar-contrasena button {
+        padding: 0.75em;
+        border: none;
+        border-radius: 4px;
+        background-color: #333;
+        color: #fff;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .recuperar-contrasena button:hover {
+        background-color: #555;
+    }
+    
+    .recuperar-contrasena a {
+        color: #333;
+        text-decoration: none;
+        font-size: 0.9em;
+    }
+    
+    .recuperar-contrasena a:hover {
+        text-decoration: underline;
+    }
+    
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1em;
+        border-top: 1px solid #444;
+    }
+</style>
+</html>

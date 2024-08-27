@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Restaurante Delicias</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <img src="descarga.jpeg" alt="Restaurante Delicias" class="logo">
+        <nav>
+            <ul class="main-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="pizzas.html">Pizzas</a></li>
+                <li><a href="bebidas.html">Bebidas</a></li>
+                <li><a href="hamburguesas.html">Hamburguesas</a></li>
+            </ul>
+            <div class="dropdown">
+                <button class="dropbtn">Más</button>
+                <div class="dropdown-content">
+                    <a href="login.html">Login</a>
+                    <a href="ayuda.html">Ayuda</a>
+                    <a href="contacto.html">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart">
+            <div class="container">
+                <h1>Carrito de Compras</h1>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items">
+                        <!-- Los elementos del carrito se llenarán dinámicamente aquí -->
+                    </tbody>
+                </table>
+                <div class="cart-summary">
+                    <p><strong>Total:</strong> <span id="cart-total">$0.00</span></p>
+                    <button class="btn-primary" id="checkout-button">Proceder al Pago</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Restaurante Delicias. Todos los derechos reservados.</p>
+        <a href="contacto.html" class="btn-primary">Contáctanos</a>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartTable = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+
+            function updateCart() {
+                cartTable.innerHTML = '';
+                let total = 0;
+
+                cartItems.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.name}</td>
+                        <td>$${item.price.toFixed(2)}</td>
+                        <td>
+                            <input type="number" value="${item.quantity}" min="1" class="quantity" data-name="${item.name}">
+                        </td>
+                        <td>$${itemTotal.toFixed(2)}</td>
+                        <td><button class="btn-danger remove-item" data-name="${item.name}">Eliminar</button></td>
+                    `;
+                    cartTable.appendChild(row);
+                });
+
+                cartTotalElement.textContent = `$${total.toFixed(2)}`;
+            }
+
+            updateCart();
+
+            cartTable.addEventListener('change', function(event) {
+                if (event.target.classList.contains('quantity')) {
+                    const name = event.target.getAttribute('data-name');
+                    const newQuantity = parseInt(event.target.value, 10);
+
+                    const item = cartItems.find(i => i.name === name);
+                    if (item) {
+                        item.quantity = newQuantity;
+                        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                        updateCart();
+                    }
+                }
+            });
+
+            cartTable.addEventListener('click', function(event) {
+                if (event.target.classList.contains('remove-item')) {
+                    const name = event.target.getAttribute('data-name');
+                    const index = cartItems.findIndex(i => i.name === name);
+
+                    if (index > -1) {
+                        cartItems.splice(index, 1);
+                        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                        updateCart();
+                    }
+                }
+            });
+
+            document.getElementById('checkout-button').addEventListener('click', function() {
+                if (cartItems.length > 0) {
+                    alert('Procediendo al pago...');
+                    // Aquí puedes redirigir al usuario a una página de pago o enviar la información del carrito al servidor
+                } else {
+                    alert('Tu carrito está vacío.');
+                }
+            });
+        });
+    </script>
+</body>
+<style>
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    max-width: 150px;
+    height: auto;
+    display: block;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+nav .main-nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+nav .main-nav li {
+    margin: 0 15px;
+}
+
+nav .main-nav li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav .main-nav li a:hover {
+    background-color: #ff6347;
+    color: #fff;
+}
+
+nav .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+nav .dropbtn {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+}
+
+nav .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+nav .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+nav .dropdown:hover .dropbtn {
+    background-color: #ff6347;
+}
+
+main {
+    padding: 2em;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.cart {
+    margin-top: 2em;
+}
+
+.cart-summary {
+    margin-top: 2em;
+    text-align: right;
+}
+
+.table {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.table thead th {
+    background-color: #333;
+    color: #fff;
+}
+
+.table tbody tr {
+    background-color: #fff;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table td {
+    padding: 10px;
+}
+
+.table .quantity {
+    width: 60px;
+}
+
+.table .remove-item {
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.table .remove-item:hover {
+    background-color: #e55347;
+}
+
+.btn-primary {
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #e55347;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+footer .btn-primary {
+    margin-top: 0.5em;
+}
+</style>
+</html>

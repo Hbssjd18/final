@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda - Restaurante Delicias</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <img src="descarga.jpeg" alt="Restaurante Delicias" class="logo">
+    </header>
+
+    <main>
+        <section class="ayuda">
+            <h1>Ayuda y Manuales</h1>
+            <p>Encuentra aquí información útil sobre cómo usar nuestro sistema y accede a manuales descargables:</p>
+            <div class="manuales">
+                <a href="Manual_de_Google_Docs_Google_Drive.pdf" class="manual-link" download>
+                    <img src="usuario.png" alt="Manual de Usuario" class="manual-img">
+                    <h2>Manual de Usuario</h2>
+                </a>
+                <a href="GINFO-G-008.pdf" class="manual-link" download>
+                    <img src="tecnico.png" alt="Manual Técnico" class="manual-img">
+                    <h2>Manual Técnico</h2>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Restaurante Delicias. Todos los derechos reservados.</p>
+    </footer>
+</body>
+<style>/* General Styles */
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 1em;
+        text-align: center;
+    }
+    
+    header .logo {
+        max-width: 150px;
+        height: auto;
+    }
+    
+    main {
+        flex: 1;
+        padding: 2em;
+        background-color: #fff;
+    }
+    
+    .ayuda {
+        text-align: center;
+    }
+    
+    .ayuda h1 {
+        font-size: 2.5em;
+        margin-bottom: 1em;
+        color: #333;
+    }
+    
+    .ayuda p {
+        font-size: 1.2em;
+        color: #666;
+        margin-bottom: 2em;
+    }
+    
+    .manuales {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+    }
+    
+    .manual-link {
+        display: block;
+        text-decoration: none;
+        color: #333;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1em;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .manual-link:hover {
+        background-color: #f1f1f1;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .manual-img {
+        width: 80px;
+        height: auto;
+        margin-bottom: 1em;
+    }
+    
+    .manual-link h2 {
+        margin: 0;
+        font-size: 1.2em;
+        color: #333;
+    }
+    
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1em;
+        border-top: 1px solid #444;
+    }
+    </style>
+</html>
